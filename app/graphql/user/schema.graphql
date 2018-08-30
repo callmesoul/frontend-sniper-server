@@ -2,7 +2,5 @@
 
 type User {
   id: ID!
-  name: String!
-  items: [Item!]
+  username: String!
 }
-

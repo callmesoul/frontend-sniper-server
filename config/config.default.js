@@ -1,21 +1,29 @@
 'use strict';
 
 module.exports = appInfo => {
-  const config = {};
+    const config = {};
 
-  // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1530610351276_4396';
+    // use for cookie sign key, should change to your own and keep security
+    config.keys = appInfo.name + '_1530610351276_4396';
 
-  // add your config here
-  config.middleware = [];
+    // add your config here
+    config.middleware = ['graphql'];
+    config.security = {
+        csrf: {
+            ignore: () => true,
+        },
+    };
 
     config.sequelize = {
-        dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
-        database: 'test',
+        dialect: 'mysql',
         host: 'localhost',
-        port: '3306',
+        port: 3306,
+        database: 'frontend-sniper',
         username: 'root',
-        password: 'root',
+        password: 'root'
+    };
+    config.jwt = {
+        secret: "FrontSniperServer"
     };
 
     config.graphql = {
@@ -27,10 +35,17 @@ module.exports = appInfo => {
         // 是否加载开发者工具 graphiql, 默认开启。路由同 router 字段。使用浏览器打开该可见。
         graphiql: true,
         // graphQL 路由前的拦截器
-        onPreGraphQL: function* (ctx) {},
+        onPreGraphQL: function* (ctx) {
+        },
         // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
-        onPreGraphiQL: function* (ctx) {},
+        onPreGraphiQL: function* (ctx) {
+        },
+    };
+    config.view = {
+        mapping: {
+            '.ejs': 'ejs',
+        },
     };
 
-  return config;
+    return config;
 };
