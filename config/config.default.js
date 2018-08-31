@@ -7,7 +7,8 @@ module.exports = appInfo => {
     config.keys = appInfo.name + '_1530610351276_4396';
 
     // add your config here
-    config.middleware = ['graphql'];
+    config.middleware = ['checkAuth','graphql'];
+
     config.security = {
         csrf: {
             ignore: () => true,
@@ -36,11 +37,24 @@ module.exports = appInfo => {
         graphiql: true,
         // graphQL 路由前的拦截器
         onPreGraphQL: function* (ctx) {
+            console.log('graphQL',ctx)
         },
         // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
         onPreGraphiQL: function* (ctx) {
+            console.log('graphQL',ctx)
         },
     };
+
+    config.security = {
+        csrf: false
+    };
+
+    config.cors = {
+        origin: '*',
+        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+        credentials: true,
+    };
+
     config.view = {
         mapping: {
             '.ejs': 'ejs',

@@ -2,4 +2,5 @@
 
 type Mutation {
   register(username:String!,password:String!,email:String!):String!
+  addApp(name:String!,emailNotice:Boolean!):App
 }

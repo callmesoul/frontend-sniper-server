@@ -32,7 +32,12 @@ module.exports = app => {
             comment:'列数'
         },
         appId:{
-            type:INTEGER
+            type:INTEGER,
+            allowNull: false
+        },
+        userId:{
+            type:INTEGER,
+            allowNull: false
         },
         createdAt:DATE,
         updatedAt:DATE,
@@ -49,7 +54,8 @@ module.exports = app => {
 
     Error.associate=function () {
         let model=app.model;
-
+        model.Error.belongsTo(model.App,{foreignKey:'appId',as:'errorApp'});
+        model.Error.belongsTo(model.User,{foreignKey:'userId',as:'errorUser'});
     };
 
     return Error;

@@ -7,6 +7,16 @@ module.exports = app => {
             primaryKey: true,
             autoIncrement: true
         },
+        appId:{
+            type: UUID,
+            allowNull:false,
+            defaultValue:UUIDV1
+        },
+        appScrect:{
+            type: UUID,
+            allowNull:false,
+            defaultValue:UUIDV1
+        },
         emailNotice:{
             type:BOOLEAN,
             allowNull:false
@@ -29,13 +39,14 @@ module.exports = app => {
         freezeTableName: true,
         underscored: false,
         comment: "应用表",
-        tableName: 'projects'
+        tableName: 'apps'
     });
 
     App.associate=function () {
         let model=app.model;
-        model.App.hasMany(model.Error,{as:'appError',foreignKey:'appId'});
-        model.App.hasMany(model.Email,{as:'appEmail',foreignKey:'appId'});
+        model.App.hasMany(model.Error,{as:'appError'});
+        model.App.belongsTo(model.User,{as:'appUser',foreignKey:'userId'});
+        model.App.hasMany(model.Email,{as:'appEmail',foreignKey:'appId',targetKey:'id'});
     };
 
     return App;

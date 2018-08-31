@@ -27,7 +27,9 @@ module.exports = app => {
         let model=app.model;
 
         //用户 <--> 应用   1:m
-        model.User.hasMany(model.App,{as:'userProject',targetKey:'id',foreignKey:'userId'});
+        model.User.hasMany(model.App,{as:'userApp',targetKey:'id',foreignKey:'userId'});
+        //用户 <--> 错误   1:m
+        model.User.hasMany(model.Error,{as:'userError',targetKey:'id',foreignKey:'userId'});
         //用户 <--> 通知邮件箱地址   1:m
         model.User.hasMany(model.Email,{as:'userEmail',targetKey:'id',foreignKey:'userId'});
 

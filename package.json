@@ -4,12 +4,16 @@
   "description": "前端监控",
   "private": true,
   "dependencies": {
+    "apollo-link": "^1.2.2",
+    "dataloader": "^1.4.0",
     "egg": "^2.2.1",
+    "egg-cors": "^2.1.0",
     "egg-graphql": "^2.1.0",
     "egg-jwt": "^3.1.2",
     "egg-scripts": "^2.5.0",
     "egg-sequelize": "^3.1.5",
     "egg-view-ejs": "^2.0.0",
+    "graphql": "^14.0.0",
     "mysql2": "^1.6.1"
   },
   "devDependencies": {

@@ -1,0 +1,13 @@
+type Error {
+    id: ID!,
+    title:String!,
+    msg:String!,
+    category:String!,
+    level:String!,
+    col:Int,
+    line:Int,
+    appId:Int!,
+    createdAt:Date,
+    updatedAt:Date,
+    errorApp:App
+}

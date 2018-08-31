@@ -8,16 +8,20 @@ exports.sequelize = {
     package: 'egg-sequelize'
 }
 
+exports.jwt = {
+    enable: true,
+    package: "egg-jwt"
+};
+
 exports.graphql = {
     enable: true,
     package: 'egg-graphql',
 };
-
+exports.cors = {
+    enable: true,
+    package: 'egg-cors',
+};
 exports.ejs = {
     enable: true,
     package: 'egg-view-ejs',
-};
-exports.jwt = {
-    enable: true,
-    package: "egg-jwt"
 };
