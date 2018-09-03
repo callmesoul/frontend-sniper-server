@@ -11,3 +11,8 @@ type Error {
     updatedAt:Date,
     errorApp:App
 }
+
+type AppError{
+    pageParams:PageParams
+    rows:[Error]
+}

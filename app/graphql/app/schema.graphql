@@ -5,6 +5,8 @@ type App {
   emailNotice:Boolean!,
   name: String!,
   userId:Int!,
+  appId:String!
+  appScrect:String!,
   createdAt: Date,
   updatedAt: Date,
   deletedAt : Date,

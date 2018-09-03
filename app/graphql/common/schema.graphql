@@ -1,2 +1,8 @@
 scalar Date
 
+type PageParams{
+    page:Int!,
+    limit:Int!,
+    totalPage:Int!
+}
+

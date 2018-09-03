@@ -8,6 +8,9 @@ module.exports = {
     Query: {
         app(root, {id}, ctx) {
             return ctx.model.App.findById(id);
+        },
+        userApps(root, params , ctx){
+            return ctx.model.App.findAll({where:{userId:ctx.user.id}});
         }
     },
     Mutation: {

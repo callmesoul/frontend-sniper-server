@@ -46,13 +46,13 @@ module.exports = appInfo => {
     };
 
     config.security = {
-        csrf: false
+        csrf: false,
+        domainWhiteList: [ 'http://127.0.0.1:8080' ],
     };
 
     config.cors = {
         origin: '*',
-        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
-        credentials: true,
+        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
     };
 
     config.view = {

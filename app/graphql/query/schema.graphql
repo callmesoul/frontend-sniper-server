@@ -2,5 +2,7 @@
 type Query {
   user(id: ID!): User
   app(id:ID!):App,
+  userApps:[App],
+  appErrors(id:ID!,page:Int,limit:Int):AppError,
   userErrors:[Error]
 }

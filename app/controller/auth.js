@@ -4,13 +4,6 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index(ctx) {
-    let user=await ctx.model.User.findAll({
-        include:[{
-          model:ctx.model.App,
-            as:'userApp'
-        }]
-    })
-      ctx.body=user;
     let username=ctx.request.body.username;
     let password=ctx.request.body.password;
     let user=await ctx.model.User.findOne({where:{username:username}});
