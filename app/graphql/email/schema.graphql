@@ -1,0 +1,13 @@
+type Email {
+    id: ID!,
+    email: String!,
+    appId:String!,
+    userId:Int!,
+    createdAt:Date,
+    emailApp:App
+}
+
+type EmailList{
+    pageParams:PageParams,
+    rows:[Email]
+}

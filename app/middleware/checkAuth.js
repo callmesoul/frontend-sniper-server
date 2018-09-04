@@ -1,7 +1,7 @@
 module.exports = options => {
     return async function checkAuth(ctx, next) {
         let path=ctx.request.url;
-        if(path==='/login' || path==='/createError'){
+        if(path==='/login' || path==='/createError' || path==='/'){
             await next();
         }else {
             let token = ctx.request.header.token || ctx.request.body.token || ctx.request.query.token;

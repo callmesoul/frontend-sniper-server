@@ -1,0 +1,6 @@
+type EmailConfig {
+    id: ID!,
+    user:String!,
+    pass:String!,
+    server:String!
+}

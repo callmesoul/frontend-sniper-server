@@ -5,4 +5,6 @@ type Query {
   userApps:[App],
   appErrors(id:ID!,page:Int,limit:Int):AppError,
   userErrors:[Error]
+  emailConfig:EmailConfig,
+  emailList(page:Int,limit:Int,appId:Int):EmailList
 }

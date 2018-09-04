@@ -1,15 +1,15 @@
 module.exports = app => {
     const { STRING, INTEGER, DATE } = app.Sequelize;
 
-    const Email = app.model.define('email', {
+    const EmailConfig = app.model.define('emailConfig', {
         id: {
             type: INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        email: STRING(40),
-        appId:INTEGER,
-        userId:INTEGER,
+        user: STRING(40),
+        pass: STRING(40),
+        server:STRING(20),
         createdAt:DATE,
         updatedAt:DATE,
         deletedAt:DATE,
@@ -19,14 +19,13 @@ module.exports = app => {
         paranoid:true,
         freezeTableName: true,
         underscored: false,
-        comment: "通知邮件表",
-        tableName: 'emails'
+        comment: "邮件配置",
+        tableName: 'email-config'
     });
 
-    Email.associate=function () {
+    EmailConfig.associate=function () {
         let model=app.model;
-        model.Email.belongsTo(model.App,{foreignKey:'appId',as:'emailApp'})
     };
 
-    return Email;
+    return EmailConfig;
 };
