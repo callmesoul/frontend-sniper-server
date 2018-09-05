@@ -26,6 +26,24 @@ module.exports = {
         }
     },
     Mutation: {
-
+        async deleteEmail(root,params,ctx){
+            let res = await ctx.model.Email.destroy({where:{id:params.id}});
+            if(res===1){
+                return true
+            }else {
+                return false;
+            }
+        },
+        async createEmail(root,params,ctx){
+            return await ctx.model.Email.create(params);
+        },
+        async updateEmail(root,params,ctx){
+            let res= await ctx.model.Email.update(params,{where:{id:params.id}});
+            if(res[0]>0){
+                return true;
+            }else {
+                return false;
+            }
+        }
     }
 };

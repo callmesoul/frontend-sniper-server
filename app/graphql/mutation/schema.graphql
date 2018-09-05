@@ -2,6 +2,12 @@
 
 type Mutation {
   register(username:String!,password:String!,email:String!):String!
-  addApp(name:String!,emailNotice:Boolean!):App,
+  createApp(name:String!,emailNotice:Boolean!):App,
+  updateApp(name:String!,emailNotice:Boolean!,id:ID!):Int
   updateEmailConfig(user:String!,pass:String!,server:String!):EmailConfig,
+  deleteEmail(id:ID!):Int
+  createEmail(email:String!,appId:Int!):Email
+  updateEmail(email:String!,appId:Int!,id:ID!):Int
+
+
 }

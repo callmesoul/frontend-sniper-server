@@ -14,7 +14,7 @@ module.exports = {
         }
     },
     Mutation: {
-        addApp: async (root, data, ctx) => {
+        createApp: async (root, data, ctx) => {
             var app = await ctx.model.App.findOne({where: {name: data.name}});
             if (app) {
                 throw new Error('项目名称已存在');
@@ -22,6 +22,14 @@ module.exports = {
                 data.userId=ctx.user.id;
                 app = await ctx.model.App.create(data);
                 return app;
+            }
+        },
+        updateApp: async (root, params, ctx) => {
+            var res = await ctx.model.App.update(params,{where: {id: params.id}});
+            if(res[0]>0){
+                return true;
+            }else {
+                return false;
             }
         },
     }
