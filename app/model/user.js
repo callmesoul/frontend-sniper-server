@@ -25,7 +25,6 @@ module.exports = app => {
 
     User.associate=function () {
         let model=app.model;
-
         //用户 <--> 应用   1:m
         model.User.hasMany(model.App,{as:'userApp',targetKey:'id',foreignKey:'userId'});
         //用户 <--> 错误   1:m

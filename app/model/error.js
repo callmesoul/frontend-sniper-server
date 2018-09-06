@@ -1,5 +1,5 @@
 module.exports = app => {
-    const { STRING, INTEGER, DATE } = app.Sequelize;
+    const { STRING, INTEGER, DATE,TEXT} = app.Sequelize;
 
     const Error = app.model.define('error', {
         id: {
@@ -12,7 +12,7 @@ module.exports = app => {
             comment:'错误标题'
         },
         msg:{
-            type:STRING,
+            type:TEXT,
             comment:'错误信息'
         },
         category:{
@@ -37,7 +37,7 @@ module.exports = app => {
         },
         userId:{
             type:INTEGER,
-            allowNull: false
+            allowNull: true
         },
         createdAt:DATE,
         updatedAt:DATE,

@@ -15,7 +15,7 @@ module.exports = {
             if(params.appId){
                 where.appId=params.appId;
             }
-            let emails=await ctx.model.Email.findAll({where:where,limit:limlt,offset:offset});
+            let emails=await ctx.model.Email.findAll({where:where,limit:limlt,offset:offset,order: [['createdAt', 'DESC']]});
             let count =await ctx.model.Email.count();
             params.totalPage=Math.ceil(count/limlt);
 
@@ -35,7 +35,10 @@ module.exports = {
             }
         },
         async createEmail(root,params,ctx){
-            return await ctx.model.Email.create(params);
+            let Email=await ctx.model.Email.create(params);
+
+            return Email;
+            console.log(31233)
         },
         async updateEmail(root,params,ctx){
             let res= await ctx.model.Email.update(params,{where:{id:params.id}});

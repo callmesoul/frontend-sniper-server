@@ -10,7 +10,7 @@ module.exports = {
             return ctx.model.App.findById(id);
         },
         userApps(root, params , ctx){
-            return ctx.model.App.findAll({where:{userId:ctx.user.id}});
+            return ctx.model.App.findAll({where:{userId:ctx.user.id},order: [['createdAt', 'DESC']]});
         }
     },
     Mutation: {

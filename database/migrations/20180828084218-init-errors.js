@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async(queryInterface, Sequelize) => {
-      const {INTEGER, DATE, STRING} = Sequelize;
+      const {INTEGER, DATE, STRING,TEXT} = Sequelize;
       await queryInterface.createTable('errors', {
           id: {
               type: INTEGER,
@@ -14,7 +14,7 @@ module.exports = {
               comment:'错误标题'
           },
           msg:{
-              type:STRING,
+              type:TEXT,
               comment:'错误信息'
           },
           category:{
@@ -34,6 +34,9 @@ module.exports = {
               comment:'列数'
           },
           appId:{
+              type:INTEGER
+          },
+          userId:{
               type:INTEGER
           },
           createdAt:DATE,

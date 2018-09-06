@@ -4,6 +4,7 @@ type Query {
   app(id:ID!):App,
   userApps:[App],
   appErrors(id:ID!,page:Int,limit:Int):AppError,
+  error(id:ID!):Error
   userErrors:[Error]
   emailConfig:EmailConfig,
   emailList(page:Int,limit:Int,appId:Int):EmailList

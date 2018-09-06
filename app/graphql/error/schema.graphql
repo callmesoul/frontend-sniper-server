@@ -10,6 +10,7 @@ type Error {
     createdAt:Date,
     updatedAt:Date,
     errorApp:App
+    sameErrorList:[Error]
 }
 
 type AppError{
