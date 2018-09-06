@@ -36,6 +36,7 @@
 1. [ ] 添加UA信息
 2. [ ] 添加用户信息
 3. [ ] 记录用户行为
+4. [ ] 手动上传报错
 
 ## QuickStart
 <!-- add docs here for user -->
