@@ -9,7 +9,7 @@ module.exports = appInfo => {
         port: 3306,
         database: 'frontend-sniper',
         username: 'root',
-        password: 'windowwei'
+        password: ''
 
     };
 
