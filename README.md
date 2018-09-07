@@ -33,6 +33,11 @@
 5. `npm run dev` open http://localhost:7001/
 
 
+##demo
+[demo](http://frontend-sniper-admin.callmesoul.cn)
+username:test
+password:test
+
 ## todo
 
 - [x] 支持vue
