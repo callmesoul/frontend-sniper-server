@@ -2,7 +2,11 @@
 
 module.exports = appInfo => {
     const config = {};
-
+    config.cluster = {
+        listen: {
+            port: 7000
+        }
+    };
     config.sequelize = {
         dialect: 'mysql',
         host: 'localhost',

@@ -16,7 +16,7 @@
   "production": {
     "username": "root",
     "password": "root",
-    "database": "database_production",
+    "database": "frontend-sniper",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

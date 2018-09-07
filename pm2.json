@@ -1,0 +1,5 @@
+{
+  "name": "frontend-sniper",
+  "script": "./index.js",
+  "env": { "EGG_SERVER_ENV": "prod" }
+}
