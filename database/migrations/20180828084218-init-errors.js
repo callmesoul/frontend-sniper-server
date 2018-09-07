@@ -50,3 +50,4 @@ module.exports = {
       await queryInterface.dropTable('errors');
   }
 };
+
