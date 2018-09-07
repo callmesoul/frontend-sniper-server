@@ -2,13 +2,13 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      queryInterface.addColumn('errors','userId',{
+      queryInterface.addColumn('email-config','userId',{
         type:Sequelize.INTEGER,
           allowNull: true
       })
   },
 
   down: (queryInterface, Sequelize) => {
-      queryInterface.removeColumn('erros', 'userId');
+      queryInterface.removeColumn('email-config', 'userId');
   }
 };

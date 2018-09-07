@@ -15,7 +15,21 @@ module.exports = {
             if(params.appId){
                 where.appId=params.appId;
             }
-            let emails=await ctx.model.Email.findAll({where:where,limit:limlt,offset:offset,order: [['createdAt', 'DESC']]});
+            let emails=await ctx.model.Email.findAll(
+                {
+                    where:where,
+                    limit:limlt,
+                    offset:offset,
+                    include:[
+                            {
+                                model:ctx.model.App,
+                                as:'emailApp',
+                                where:{'userId':ctx.user.id}
+                            }
+                        ],
+                    order: [['createdAt', 'DESC']]
+                }
+            );
             let count =await ctx.model.Email.count();
             params.totalPage=Math.ceil(count/limlt);
 

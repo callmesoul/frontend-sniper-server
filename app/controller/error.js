@@ -16,7 +16,8 @@ class ErrorController extends Controller {
     if(app && app.emailNotice){
       data.appId=app.id;
       let error=await ctx.model.Error.create(data);
-      let email=await ctx.model.EmailConfig.findOne();
+      let email=await ctx.model.EmailConfig.findOne({where:{userId:app.userId}});
+
       let count=await ctx.model.Error.count({where:{title:error.title,appId:error.appId,level:error.level,category:error.category}});
         if(count===1 || (count%5)===0){
             var transporter = nodemailer.createTransport({
