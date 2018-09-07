@@ -10,6 +10,7 @@ module.exports = app => {
         user: STRING(40),
         pass: STRING(40),
         server:STRING(20),
+        userId:INTEGER,
         createdAt:DATE,
         updatedAt:DATE,
         deletedAt:DATE,
