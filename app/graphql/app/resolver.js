@@ -10,7 +10,11 @@ module.exports = {
             return ctx.model.App.findById(id);
         },
         userApps(root, params , ctx){
-            return ctx.model.App.findAll({where:{userId:ctx.user.id},order: [['createdAt', 'DESC']]});
+            const where={userId:ctx.user.id};
+            if(params.name){
+                where.name={$like:`%${params.name}%`};
+            }
+            return ctx.model.App.findAll({where:where,order: [['createdAt', 'DESC']]});
         }
     },
     Mutation: {
@@ -27,10 +31,20 @@ module.exports = {
         updateApp: async (root, params, ctx) => {
             var res = await ctx.model.App.update(params,{where: {id: params.id}});
             if(res[0]>0){
-                return true;
+                let app = await ctx.model.App.findOne({where: {id: params.id}});
+                return app;
             }else {
-                return false;
+                throw new Error('更新失败');
             }
         },
+        deleteApp:async (root, params, ctx) =>{
+            let res=await ctx.model.App.destroy({where:{id:params.id}});
+            if(res>0){
+                return true
+            }else {
+                throw new Error('删除失败，请稍后再试')
+            }
+
+        }
     }
 };

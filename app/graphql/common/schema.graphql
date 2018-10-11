@@ -4,5 +4,6 @@ type PageParams{
     page:Int!,
     limit:Int!,
     totalPage:Int!
+    appId:ID
 }
 

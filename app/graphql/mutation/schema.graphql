@@ -3,11 +3,10 @@
 type Mutation {
   register(username:String!,password:String!,email:String!):String!
   createApp(name:String!,emailNotice:Boolean!):App,
-  updateApp(name:String!,emailNotice:Boolean!,id:ID!):Int
+  updateApp(name:String!,emailNotice:Boolean!,id:ID!):App
   updateEmailConfig(user:String!,pass:String!,server:String!):EmailConfig,
   deleteEmail(id:ID!):Int
-  createEmail(email:String!,appId:Int!):Email
-  updateEmail(email:String!,appId:Int!,id:ID!):Int
-
-
+  deleteApp(id:ID!):Boolean
+  createEmail(email:String!,appId:ID!):Email
+  updateEmail(email:String!,appId:Int!,id:ID!):Email
 }

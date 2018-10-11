@@ -2,10 +2,10 @@
 type Query {
   user(id: ID!): User
   app(id:ID!):App,
-  userApps:[App],
+  userApps(name:String):[App],
   appErrors(id:ID!,page:Int,limit:Int):AppError,
   error(id:ID!):Error
   userErrors:[Error]
   emailConfig:EmailConfig,
-  emailList(page:Int,limit:Int,appId:Int):EmailList
+  emailList(page:Int,limit:Int,appId:ID):EmailList
 }
