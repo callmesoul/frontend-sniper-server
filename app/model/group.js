@@ -1,32 +1,30 @@
 module.exports = app => {
     const { STRING, INTEGER, DATE } = app.Sequelize;
 
-    const EmailConfig = app.model.define('emailConfig', {
+    const Group = app.model.define('group', {
         id: {
             type: INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        user: STRING(40),
-        pass: STRING(40),
-        server:STRING(20),
-        userId:INTEGER,
-        createdAt:DATE,
-        updatedAt:DATE,
-        deletedAt:DATE,
+        name: STRING(30),
+        createdAt: DATE,
+        updatedAt: DATE,
+        deletedAt : DATE,
     },{
         engine: 'InnoDB',
         timestamps:true,
         paranoid:true,
         freezeTableName: true,
         underscored: false,
-        comment: "邮件配置",
-        tableName: 'email-config'
+        comment: "用户组表",
+        tableName: 'groups'
     });
 
-    EmailConfig.associate=function () {
+    Group.associate=function () {
         let model=app.model;
+        model.Group.hasMany(model.User,{foreignKey:'groupId'});
     };
 
-    return EmailConfig;
+    return Group;
 };

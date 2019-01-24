@@ -54,8 +54,8 @@ module.exports = app => {
 
     Error.associate=function () {
         let model=app.model;
-        model.Error.belongsTo(model.App,{foreignKey:'appId',as:'errorApp'});
-        model.Error.belongsTo(model.User,{foreignKey:'userId',as:'errorUser'});
+        model.Error.belongsTo(model.App,{foreignKey:'appId'});
+        model.Error.belongsTo(model.User,{foreignKey:'userId'});
     };
 
     return Error;

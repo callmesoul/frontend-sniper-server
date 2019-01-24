@@ -25,7 +25,7 @@ module.exports = app => {
 
     Email.associate=function () {
         let model=app.model;
-        model.Email.belongsTo(model.App,{foreignKey:'appId',as:'emailApp'})
+        model.Email.belongsTo(model.App,{foreignKey:'appId'})
     };
 
     return Email;

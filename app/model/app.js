@@ -44,9 +44,9 @@ module.exports = app => {
 
     App.associate=function () {
         let model=app.model;
-        model.App.hasMany(model.Error,{as:'appError'});
-        model.App.belongsTo(model.User,{as:'appUser',foreignKey:'userId'});
-        model.App.hasMany(model.Email,{as:'appEmail',foreignKey:'appId',targetKey:'id'});
+        model.App.hasMany(model.Error,{foreignKey:'appId'});
+        model.App.belongsTo(model.User,{foreignKey:'userId'});
+        model.App.hasMany(model.Email,{foreignKey:'appId'});
     };
 
     return App;
