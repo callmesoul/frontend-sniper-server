@@ -25,7 +25,28 @@ class ErrorController extends Controller {
     }
 
     async create(ctx){
-        console.log(ctx.request.body);
+
+        if(!ctx.request.header.appId || !ctx.request.header.appScrect){
+            ctx.status=400;
+            ctx.body={
+                'msg':'appId或appScrect有误'
+            }
+        }else{
+            let app=await ctx.model.App.findOne({where:{appId:ctx.request.header.appId,appScrect:ctx.request.header.appScrect}});
+            if(app){
+                let body=ctx.request.body;
+                body.appId=app.id;
+                let error=await ctx.model.Errors.create(body);
+            }else{
+                ctx.status=400;
+                ctx.body={
+                    'msg':'appId或appScrect有误'
+                }
+            }
+        }
+
+        console.log(ctx.request.query);
+        ctx.body='asdsd';
     };
 
     async show(ctx){
