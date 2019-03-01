@@ -17,13 +17,13 @@
 
 - 服务端 [frontend-sniper-server](https://github.com/callmesoul/frontend-sniper-server)
 - 管理后台 [frontend-sniper-admin](https://github.com/callmesoul/frontend-sniper-admin)
-- 错误探针 [better-js](https://github.com/callmesoul/better-js)
+- 错误探针 [frontend-sniper-explorer](https://github.com/callmesoul/frontend-sniper-explorer)
 
 ## 技术栈
 
  1. [egg](https://eggjs.org/zh-cn/)
  2. [sequelize](http://docs.sequelizejs.com)
- 3. [GraphQl](http://graphql.cn/)
+ 3. [GraphQl](http://graphql.cn/) //移除
 
 ## 使用
 1. clone项目
