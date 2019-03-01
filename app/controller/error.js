@@ -34,7 +34,7 @@ class ErrorController extends Controller {
             let emailListConfig=[];
             emailList.map((item)=>{
                 let mailOptions = {
-                    from: email.user, // sender address
+                    from: 'FrontSniper', // sender address
                     to: item.email, // list of receivers
                     subject: '【'+app.name+'】'+error.title, // Subject line
                     text: 'title:'+error.title+'\n', // plaintext body

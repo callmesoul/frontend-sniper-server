@@ -9,6 +9,10 @@ module.exports = appInfo => {
     // add your config here
     config.middleware = ['checkAuth'];
 
+    config.checkAuth={
+        match: '/api',
+    };
+
     config.security = {
         csrf: {
             ignore: () => true,
@@ -28,10 +32,20 @@ module.exports = appInfo => {
     };
 
     config.email={
-        user: '',
-        pass: '',
-        server:'',
+        user: '547437716@qq.com',
+        pass: 'zmdgtcvqwszabehc',//POP3/SMTP服务授权码
+        server:'QQ',
+        /*
+        QQ邮箱:QQ
+        126邮箱:126
+        163邮箱:163
+        Gmail:Gmail
+        阿里企业邮箱:qiye.aliyun
+        Hotmail:Hotmail
+        GandiMail:GandiMail
+        * */
     };
+    config.adminHost='http://localhost:8081';
 
     config.security = {
         csrf: false,
