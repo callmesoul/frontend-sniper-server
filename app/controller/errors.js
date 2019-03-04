@@ -131,15 +131,49 @@ class ErrorController extends Controller {
     };
 
     async show(ctx){
-
+        let error = await ctx.model.Error.findById(ctx.params.id);
+        if(error){
+            let sames= await ctx.model.Error.findAll({where:{title:error.title,appId:error.appId,level:error.level,category:error.category},order: [
+                    ['createdAt', 'DESC']
+                ]});
+            ctx.body={
+                error:error,
+                sames:sames
+            }
+        }else{
+            ctx.status=400;
+            ctx.body={
+                msg:'找不到该错误'
+            }
+        }
     }
 
     async update(ctx){
-
+        let res= await ctx.model.Error.update(ctx.request.body,{where:{id:ctx.params.id}});
+        if(res &&  res[0]>0){
+            ctx.body={
+                msg: '更新成功'
+            }
+        }else{
+            ctx.status=400;
+            ctx.body={
+                msg: '更新失败'
+            }
+        }
     }
 
     async destroy(ctx){
-
+        let res= await ctx.model.Error.destroy({where:{id:ctx.params.id}});
+        if(res && res>0){
+            ctx.body={
+                msg: '删除成功'
+            }
+        }else {
+            ctx.status=400;
+            ctx.body={
+                msg: '删除失败，请稍后再试'
+            }
+        }
     }
 }
 

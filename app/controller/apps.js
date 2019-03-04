@@ -26,7 +26,7 @@ class ErrorController extends Controller {
   }
 
   async show(ctx){
-      let app = ctx.model.App.findById(ctx.params.id);
+      let app = await ctx.model.App.findById(ctx.params.id);
       if(app){
           ctx.body={
               app:app
