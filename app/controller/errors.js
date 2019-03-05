@@ -74,7 +74,7 @@ class ErrorController extends Controller {
                                             '        <td style="background: #000; color: #fff;padding: 1em 0;">' +
                                             '            <img src="https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/frontend-sniper.svg" style="width: 3em;height: 3em; margin-right: 0.5em; display: inline-block; vertical-align: middle;">' +
                                             '            <span style="font-size: 4em; display: inline-block; vertical-align: middle;">Frontend Sniper</span>' +
-                                            '            <div style="text-align: center"><a title="Frontend Sniper" alt="Frontend Sniper" href="https://github.com/callmesoul/frontend-sniper-server" target="_blank" style="color: #ffffff;">https://github.com/callmesoul/frontend-sniper-server</a></div>' +
+                                            '            <div style="text-align: center"><a title="Frontend Sniper" alt="Frontend Sniper" href="https://github.com/callmesoul/frontend-sniper" target="_blank" style="color: #ffffff;">https://github.com/callmesoul/frontend-sniper</a></div>' +
                                             '        </td>' +
                                             '    </tr>' +
                                             '    <tr style="padding: 0 1em; display: block; margin-top: 1em;">' +
