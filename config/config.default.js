@@ -25,7 +25,8 @@ module.exports = appInfo => {
         port: 3306,
         database: 'frontend-sniper',
         username: 'root',
-        password: 'root'
+        password: 'root',
+        timezone: '+08:00' //东八时区
     };
     config.jwt = {
         secret: "FrontSniperServer"

@@ -39,6 +39,65 @@ module.exports = app => {
             type:INTEGER,
             allowNull: true
         },
+        ua:{
+            type:STRING,
+            allowNull: true,
+        },
+        browser:{
+            type:STRING,
+            allowNull: true,
+            set(val) {
+                this.setDataValue('browser', JSON.stringify(val));
+            },
+            get() {
+                const browser = this.getDataValue('browser');
+                return JSON.parse(browser);
+            },
+        },
+        engine:{
+            type:STRING,
+            allowNull: true,
+            set(val) {
+                this.setDataValue('engine', JSON.stringify(val));
+            },
+            get() {
+                const engine = this.getDataValue('engine');
+                return JSON.parse(engine);
+            },
+        },
+        os:{
+            type:STRING,
+            allowNull: true,
+            set(val) {
+                this.setDataValue('os', JSON.stringify(val));
+            },
+            get() {
+                const os = this.getDataValue('os');
+                return JSON.parse(os);
+            },
+        },
+        device:{
+            type:STRING,
+            allowNull: true,
+            set(val) {
+                this.setDataValue('device', JSON.stringify(val));
+            },
+            get() {
+                const device = this.getDataValue('device');
+                return JSON.parse(device);
+            },
+        },
+        cpu:{
+            type:STRING,
+            allowNull: true,
+            set(val) {
+                this.setDataValue('cpu', JSON.stringify(val));
+            },
+            get() {
+                const cpu = this.getDataValue('cpu');
+                return JSON.parse(cpu);
+            },
+        },
         createdAt:DATE,
         updatedAt:DATE,
         deletedAt:DATE

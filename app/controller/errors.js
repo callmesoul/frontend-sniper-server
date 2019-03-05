@@ -2,26 +2,23 @@
 const Controller = require('egg').Controller;
 const nodemailer = require('nodemailer');
 const moment = require('moment');
+const parser = require('ua-parser-js');
 
 class ErrorController extends Controller {
     async index(ctx) {
         let group;
         let includeAppWhere={};
+        let errors;
         if(ctx.request.query.userErrors){
-            group=['title','appId','level','category'];
-            includeAppWhere.userId=ctx.user.id;
+            errors=await ctx.model.query("SELECT * FROM (SELECT `errors`.*,`apps`.name from `errors` LEFT JOIN `apps` ON `errors`.`appId`=`apps`.`id` WHERE `apps`.userId="+ctx.user.id+" ORDER BY `createdAt` DESC LIMIT 1000) as result GROUP BY `title`,'appId','level','category' ORDER BY `createdAt` DESC", { type: ctx.model.Sequelize.QueryTypes.SELECT});
+        }else{
+            errors=await ctx.model.Error.findAll({
+                include:[{
+                    model:ctx.model.App,
+                }],
+                order: [['createdAt', 'DESC']],
+            });
         }
-        let errors=await ctx.model.Error.findAll({
-            include:[{
-                model:ctx.model.App,
-                where:includeAppWhere
-            }],
-            limit:30,
-            group:group,
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        });
         ctx.body={
             errors:errors
         }
@@ -38,9 +35,12 @@ class ErrorController extends Controller {
         }else{
             let app=await ctx.model.App.findOne({where:{appId:appId,appScrect:appScrect}});
             if(app){
+                let ua=parser(ctx.request.header['user-agent']);
+                console.log("=========================ua");
                 let body=ctx.request.body;
                 body.appId=app.id;
-                let error=await ctx.model.Error.create(body);
+                let params=Object.assign(body,ua);
+                let error=await ctx.model.Error.create(params);
                 //发邮件
                 if(app.emailNotice){
                     ctx.model.Error.count({where:{title:error.title,appId:error.appId,level:error.level,category:error.category}}).then((count)=>{

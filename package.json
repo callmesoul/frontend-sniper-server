@@ -16,7 +16,8 @@
     "graphql": "^14.0.0",
     "moment": "^2.22.2",
     "mysql2": "^1.6.1",
-    "nodemailer": "^4.6.8"
+    "nodemailer": "^4.6.8",
+    "ua-parser-js": "^0.7.19"
   },
   "devDependencies": {
     "autod": "^3.0.1",
