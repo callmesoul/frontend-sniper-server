@@ -48,7 +48,7 @@ module.exports = appInfo => {
         * */
     };
     //管理端域名，设好，邮件跳转才好跳到
-    config.adminHost='http://localhost:8081';
+    config.adminHost='http://localhost:8080';
 
     //域名报名单
     config.security = {
