@@ -22,5 +22,5 @@
 2. `npm install` 安装依赖
 3. 修改`config/config.*.js`和`database/config.json`的数据库配置并建好数据库
 4. `npx sequelize db:migrate` 初始化数据库，没npx请先全局安装npx
-4. 修改`config.default.js` 的email,adminHost和security白名单设置
-5. `npm run dev` open http://localhost:3000/
+5. 修改`config.default.js` 的email,adminHost和security白名单设置
+6. `npm run dev` open http://localhost:3000/
