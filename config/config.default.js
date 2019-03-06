@@ -32,6 +32,7 @@ module.exports = appInfo => {
         secret: "FrontSniperServer"
     };
 
+    //发邮件配置
     config.email={
         user: '547437716@qq.com',
         pass: 'zmdgtcvqwszabehc',//POP3/SMTP服务授权码
@@ -46,8 +47,10 @@ module.exports = appInfo => {
         GandiMail:GandiMail
         * */
     };
+    //管理端域名，设好，邮件跳转才好跳到
     config.adminHost='http://localhost:8081';
 
+    //域名报名单
     config.security = {
         csrf: false,
         domainWhiteList: [ 'http://127.0.0.1:8080' ],
