@@ -12,7 +12,18 @@ class ErrorController extends Controller {
         if(ctx.request.query.userErrors){
             errors=await ctx.model.query("SELECT * FROM (SELECT `errors`.*,`apps`.name from `errors` LEFT JOIN `apps` ON `errors`.`appId`=`apps`.`id` WHERE `apps`.userId="+ctx.user.id+" ORDER BY `createdAt` DESC LIMIT 1000) as result GROUP BY `title`,'appId','level','category' ORDER BY `createdAt` DESC", { type: ctx.model.Sequelize.QueryTypes.SELECT});
         }else{
-            errors=await ctx.model.Error.findAll({
+            let query = ctx.request.query;
+            let page = query.page ? parseInt(query.page) : 1;
+            let limit = query.limit ? parseInt(query.limit) : 12;
+            let offset = (page - 1) * limit;
+            let where={};
+            if(query.appId){
+                where.appId=query.appId;
+            }
+            errors=await ctx.model.Error.findAndCountAll({
+                where:where,
+                limit: limit,
+                offset: offset,
                 include:[{
                     model:ctx.model.App,
                 }],

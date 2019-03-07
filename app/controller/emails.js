@@ -16,13 +16,10 @@ class ErrorController extends Controller {
         if (query.getSelf) {
             where.userId = ctx.user.id;
         }
-        console.log('-----------------------------------------');
-        console.log(where);
-        console.log('-----------------------------------------');
         let result = await ctx.model.Email.findAndCountAll(
             {
                 where: where,
-                limit: 12,
+                limit: limit,
                 offset: offset,
                 include: [
                     {
