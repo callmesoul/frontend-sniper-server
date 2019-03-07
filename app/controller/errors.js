@@ -18,7 +18,7 @@ class ErrorController extends Controller {
             let offset = (page - 1) * limit;
             let where={};
             if(query.appId){
-                where.appId=query.appId;
+                where.appId=parseInt(query.appId);
             }
             errors=await ctx.model.Error.findAndCountAll({
                 where:where,
