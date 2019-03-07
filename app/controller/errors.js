@@ -9,6 +9,9 @@ class ErrorController extends Controller {
         let errors;
         if(ctx.request.query.userErrors){
             errors=await ctx.model.query("SELECT * FROM (SELECT `errors`.*,`apps`.name from `errors` LEFT JOIN `apps` ON `errors`.`appId`=`apps`.`id` WHERE `apps`.userId="+ctx.user.id+" ORDER BY `createdAt` DESC LIMIT 1000) as result GROUP BY `title`,'appId','level','category' ORDER BY `createdAt` DESC", { type: ctx.model.Sequelize.QueryTypes.SELECT});
+            ctx.body={
+                errors:errors
+            };
         }else{
             let query = ctx.request.query;
             let page = query.page ? parseInt(query.page) : 1;
@@ -27,10 +30,9 @@ class ErrorController extends Controller {
                 }],
                 order: [['createdAt', 'DESC']],
             });
+            ctx.body=errors;
         }
-        ctx.body={
-            errors:errors
-        }
+
     }
 
     async create(ctx){
