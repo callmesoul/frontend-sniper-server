@@ -6,8 +6,6 @@ const parser = require('ua-parser-js');
 
 class ErrorController extends Controller {
     async index(ctx) {
-        let group;
-        let includeAppWhere={};
         let errors;
         if(ctx.request.query.userErrors){
             errors=await ctx.model.query("SELECT * FROM (SELECT `errors`.*,`apps`.name from `errors` LEFT JOIN `apps` ON `errors`.`appId`=`apps`.`id` WHERE `apps`.userId="+ctx.user.id+" ORDER BY `createdAt` DESC LIMIT 1000) as result GROUP BY `title`,'appId','level','category' ORDER BY `createdAt` DESC", { type: ctx.model.Sequelize.QueryTypes.SELECT});
