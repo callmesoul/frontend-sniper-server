@@ -98,6 +98,19 @@ module.exports = app => {
                 return JSON.parse(cpu);
             },
         },
+        records:{
+            type:TEXT,
+            allowNull: false,
+            defaultValue:'[]',
+            remark:'用户操作记录 用户还原用户操作',
+            set(val) {
+                this.setDataValue('records', JSON.stringify(val));
+            },
+            get() {
+                const records = this.getDataValue('records');
+                return JSON.parse(records);
+            },
+        },
         createdAt:DATE,
         updatedAt:DATE,
         deletedAt:DATE
