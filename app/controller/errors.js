@@ -143,10 +143,12 @@ class ErrorController extends Controller {
 
     async show(ctx){
         let error = await ctx.model.Error.findById(ctx.params.id);
+        console.log('error:'+error);
         if(error){
             let sames= await ctx.model.Error.findAll({where:{title:error.title,appId:error.appId,level:error.level,category:error.category},order: [
                     ['createdAt', 'DESC']
                 ]});
+            console.log('sames:'+sames);
             ctx.body={
                 error:error,
                 sames:sames
