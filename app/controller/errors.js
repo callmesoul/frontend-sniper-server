@@ -143,6 +143,7 @@ class ErrorController extends Controller {
 
     async show(ctx){
         let error = await ctx.model.Error.findOne({where:{id:ctx.params.id}});
+        console.log('ctx.params.id:'+ctx.params.id);
         console.log('error:'+error);
         if(error){
             let sames= await ctx.model.Error.findAll({where:{title:error.title,appId:error.appId,level:error.level,category:error.category},order: [
