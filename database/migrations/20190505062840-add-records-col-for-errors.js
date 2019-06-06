@@ -5,7 +5,7 @@ module.exports = {
     const {TEXT} = Sequelize;
     await queryInterface.addColumn('errors', 'records', {
       type: Sequelize.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue:'[]'
     });
   },

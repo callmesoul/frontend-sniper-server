@@ -108,7 +108,12 @@ module.exports = app => {
             },
             get() {
                 const records = this.getDataValue('records');
-                return JSON.parse(records);
+                console.log('===records=',records);
+                if(records){
+                    return JSON.parse(records);
+                }else{
+                    return [];
+                }
             },
         },
         createdAt:DATE,
