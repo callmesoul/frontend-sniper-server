@@ -142,7 +142,7 @@ class ErrorController extends Controller {
     };
 
     async show(ctx){
-        let error = await ctx.model.Email.findOne();
+        let error = await ctx.model.Error.findOne();
         console.log('ctx.params.id:'+ctx.params.id);
         console.log('error:'+error);
         if(error){
