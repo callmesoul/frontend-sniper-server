@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "dashboard",
+    "database": "frontend-sniper",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00"
@@ -10,7 +10,7 @@
   "test": {
     "username": "root",
     "password": "root",
-    "database": "dashboard",
+    "database": "frontend-sniper",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00"
@@ -18,7 +18,7 @@
   "production": {
     "username": "root",
     "password": "root",
-    "database": "dashboard",
+    "database": "frontend-sniper",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone": "+08:00"

@@ -4,13 +4,17 @@ import {
   Table,
   DataType,
   AfterCreate,
+  BelongsToMany,
 } from 'sequelize-typescript';
-import { Role } from 'src/roles/role.enum';
+import { Admin } from 'src/admins/admin.model';
+import { ProjectAdmin } from './project-admin.model';
 
 @Table({
   paranoid: true,
+  freezeTableName: true,
+  tableName: 'projects',
 })
-export class Admin extends Model {
+export class Project extends Model {
   @Column({
     type: DataType.UUID,
     comment: 'id',
@@ -24,19 +28,8 @@ export class Admin extends Model {
     allowNull: false,
     unique: true,
   })
-  username: string;
+  name: string;
 
-  @Column({
-    type: DataType.STRING(128),
-    allowNull: false,
-    unique: true,
-  })
-  password: string;
-
-  @Column({
-    type: DataType.STRING(128),
-    allowNull: false,
-    unique: true,
-  })
-  roles: Role[];
+  @BelongsToMany(() => Admin, () => ProjectAdmin)
+  users: ProjectAdmin[];
 }

@@ -1,27 +1,25 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('admins', {
+    /**
+     * Add altering commands here.
+     *
+     * Example:
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     */
+    await queryInterface.createTable('projects', {
       id: {
         type: Sequelize.UUID,
         comment: 'id',
         allowNull: false,
         primaryKey: true,
       },
-      username: {
+      name: {
         type: Sequelize.STRING(128),
         allowNull: false,
         unique: true,
-      },
-      password: {
-        type: Sequelize.STRING(128),
-        allowNull: false,
-      },
-      roles: {
-        type: Sequelize.STRING(128),
-        allowNull: false,
-        defaultValue: JSON.stringify(['user']),
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -39,6 +37,12 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('admins');
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
+    await queryInterface.dropTable('projects');
   },
 };

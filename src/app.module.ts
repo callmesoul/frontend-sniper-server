@@ -2,14 +2,14 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UsersModule } from './users/users.module';
 import { AdminsModule } from './admins/admins.module';
-import { NftBuysModule } from './nft-buys/nft-buys.module';
-import { NftSalesModule } from './nft-sales/nft-sales.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserTagsModule } from './user-tags/user-tags.module';
-import { UserTagRecordsModule } from './user-tag-records/user-tag-records.module';
+import { RolesModule } from './roles/roles.module';
+import { CaslModule } from './casl/casl.module';
+import { ProjectsModule } from './projects/projects.module';
+import { ErrorsModule } from './errors/errors.module';
+
 const fs = require('fs');
 const path = require('path');
 const databaseConfig = JSON.parse(
@@ -23,15 +23,14 @@ const env = process.env.NODE_ENV || 'development';
     SequelizeModule.forRoot({
       ...databaseConfig[env],
       autoLoadModels: true,
-      // synchronize: true,
+      synchronize: false,
     }),
-    UsersModule,
     AdminsModule,
-    NftBuysModule,
-    NftSalesModule,
     AuthModule,
-    UserTagsModule,
-    UserTagRecordsModule,
+    RolesModule,
+    CaslModule,
+    ProjectsModule,
+    ErrorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
